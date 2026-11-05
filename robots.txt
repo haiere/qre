@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hajir.is-a.dev/qre/sitemap.xml
