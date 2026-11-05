@@ -1,0 +1,2 @@
+# From the project root
+curl -L "https://i.postimg.cc/GmWt2wch/H-blue.webp" -o assets/logo.webp
