@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QRe — Free QR Code Generator</title>
+<meta name="description" content="QRe is a free QR code generator. Create, customize and download QR codes locally in your browser. Private, no signup.">
+<link rel="canonical" href="https://hajir.is-a.dev/qre">
+<meta property="og:title" content="QRe — Free QR Code Generator">
+<meta property="og:description" content="Generate, customize, and download QR codes locally in your browser.">
+<meta property="og:url" content="https://hajir.is-a.dev/qre">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A192F'/%3E%3Cpath d='M9 8v16M23 8v16M9 16h14' stroke='%237FD8CB' stroke-width='3.4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Sora:wght@600;700&display=swap">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"QRe","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free QR code generator that runs locally in your browser.","url":"https://hajir.is-a.dev/qre"}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{--bg-page:#0A192F;--bg-page-2:#0B1E33;--bg-inset:#071424;--surface-solid:#0B1E33;--text-main:#E7EEF6;--text-soft:#ADB6C2;--accent:#7FD8CB;--accent-ink:#7FD8CB;--accent-2:#D4B27A;--border-soft:#1B3348;--danger:#FF7B87;--warning:#F1C674;--success:#7FD8CB;--focus-ring:#D4B27A;--shadow-soft:0 20px 60px rgba(0,0,0,.24);--radius-sm:10px;--radius-md:16px;--radius-lg:24px;--content-max-width:1240px;--on-accent:#06202a;color-scheme:dark}
+:root[data-theme=light]{--bg-page:#F4F7FA;--bg-page-2:#fff;--bg-inset:#E8EEF4;--surface-solid:#fff;--text-main:#0A192F;--text-soft:#4A5668;--accent:#0E7C70;--accent-ink:#0B6A60;--accent-2:#8A6A2C;--border-soft:#CBD6E2;--danger:#B3261E;--warning:#8A5A00;--success:#0B6A60;--shadow-soft:0 20px 60px rgba(10,25,47,.1);--on-accent:#fff;color-scheme:light}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg-page);color:var(--text-main);font:400 16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+h1,h2,h3,.brand{font-family:Sora,Inter,system-ui,sans-serif;margin:0}
+code,.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+a{color:var(--accent-ink)}
+:focus-visible{outline:3px solid var(--focus-ring);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--on-accent);padding:10px 14px;border-radius:8px;z-index:100}.skip:focus{left:8px}
+.wrap{max-width:var(--content-max-width);margin:0 auto;padding:0 20px}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg-page) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border-soft);padding-top:env(safe-area-inset-top,0px)}
+.bar{display:flex;align-items:center;gap:12px;min-height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-size:20px;color:var(--text-main);text-decoration:none;margin-right:auto}
+.brand img{width:28px;height:28px;border-radius:7px}
+nav.main{display:flex;gap:4px}
+nav.main a{color:var(--text-soft);text-decoration:none;padding:10px 12px;border-radius:var(--radius-sm);min-height:44px;display:inline-flex;align-items:center}
+nav.main a:hover{color:var(--text-main);background:var(--bg-inset)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:var(--radius-sm);border:1px solid var(--border-soft);background:var(--bg-inset);color:var(--text-main);font:500 15px Inter,sans-serif;cursor:pointer;transition:background .15s,border-color .15s}
+.btn:hover:not(:disabled){border-color:var(--accent)}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn.icon{padding:0;width:44px}
+select.btn{padding:0 10px}
+.hero{padding:56px 0 28px;text-align:center}
+.hero h1{font-size:clamp(30px,5vw,52px);line-height:1.12;max-width:760px;margin:0 auto 14px}
+.hero p{color:var(--text-soft);max-width:560px;margin:0 auto 18px}
+.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border-soft);border-radius:99px;padding:6px 14px;font-size:14px;color:var(--accent-ink);background:var(--bg-inset)}
+.gen{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:24px;padding:24px 0 56px;align-items:start}
+.card{background:var(--surface-solid);border:1px solid var(--border-soft);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-soft)}
+.card+.card{margin-top:16px}
+.sticky{position:sticky;top:76px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+[role=tab]{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:99px;border:1px solid var(--border-soft);background:var(--bg-inset);color:var(--text-soft);font:500 14px Inter,sans-serif;cursor:pointer}
+[role=tab][aria-selected=true]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label,legend{font-size:14px;font-weight:500;color:var(--text-main)}
+fieldset{border:0;padding:0;margin:0}
+input,textarea,select{width:100%;min-height:44px;background:var(--bg-inset);color:var(--text-main);border:1px solid var(--border-soft);border-radius:var(--radius-sm);padding:10px 12px;font:400 16px Inter,sans-serif}
+textarea{min-height:110px;resize:vertical}
+input[type=color]{padding:3px;min-width:56px}
+input[type=range]{padding:0;accent-color:var(--accent)}
+input[type=checkbox]{width:22px;height:22px;min-height:0;accent-color:var(--accent)}
+input[aria-invalid=true]{border-color:var(--danger)}
+.err{color:var(--danger);font-size:14px;min-height:0}.err:not(:empty)::before{content:"⚠ "}
+.hint{color:var(--text-soft);font-size:13px}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.inl{display:flex;gap:8px}.inl>input{flex:1}
+.chk{display:flex;align-items:center;gap:10px;min-height:44px}
+details>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;font:600 17px Sora,sans-serif;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details[open]>summary .i{transform:rotate(90deg)}
+.stage{background:#fff;border-radius:var(--radius-md);display:grid;place-items:center;aspect-ratio:1;max-width:340px;margin:0 auto 14px;padding:10px;position:relative}
+.stage.chk-bg{background:repeating-conic-gradient(#ccc 0 25%,#fff 0 50%) 0 0/16px 16px}
+#qrbox svg,#qrbox canvas{max-width:100%;height:auto;display:block}
+.empty{color:#334;text-align:center;padding:20px;font-size:14px}
+.stat{display:flex;gap:8px;align-items:flex-start;padding:10px 12px;border-radius:var(--radius-sm);background:var(--bg-inset);border:1px solid var(--border-soft);margin-bottom:12px;font-size:14px}
+.stat.good{color:var(--success)}.stat.rev{color:var(--warning)}.stat.bad{color:var(--danger)}
+.stat span{color:var(--text-main)}
+.payload{background:var(--bg-inset);border:1px solid var(--border-soft);border-radius:var(--radius-sm);padding:10px 12px;font:13px/1.5 "JetBrains Mono",monospace;word-break:break-all;max-height:84px;overflow:auto;margin-bottom:12px;color:var(--text-soft)}
+.acts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.meta{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--text-soft);margin-bottom:10px;flex-wrap:wrap}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+section.sec{padding:48px 0}
+section.sec h2{font-size:clamp(24px,3.5vw,34px);margin-bottom:22px}
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.feats .card{margin:0;box-shadow:none}.feats h3{font-size:17px;margin:10px 0 6px}.feats p{margin:0;color:var(--text-soft);font-size:15px}.feats svg{color:var(--accent-ink)}
+.faq details{border:1px solid var(--border-soft);border-radius:var(--radius-md);padding:4px 18px;margin-bottom:10px;background:var(--surface-solid)}
+.faq summary{font:500 16px Inter,sans-serif}.faq p{color:var(--text-soft);margin:0 0 14px}
+footer{border-top:1px solid var(--border-soft);padding:28px 0 calc(28px + env(safe-area-inset-bottom,0px));color:var(--text-soft);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--accent);color:var(--on-accent);padding:12px 18px;border-radius:var(--radius-sm);opacity:0;pointer-events:none;transition:.2s;z-index:50;max-width:90vw;font-weight:500}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:1023px){.gen{grid-template-columns:1fr}.sticky{position:static}}
+@media (max-width:639px){nav.main{display:none}.wrap{padding:0 14px}.card{padding:16px}.row,.row3{grid-template-columns:1fr}.hero{padding-top:36px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#generator" data-i18n="skip">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+<symbol id="i-text" viewBox="0 0 24 24"><path d="M5 6V4h14v2M12 4v16M9 20h6"/></symbol>
+<symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+<symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 8h4a2 2 0 0 1 0 4h-4m0 0h4.5a2 2 0 0 1 0 4H9.5M9.5 7v10M12 6v1.5M12 16.5V18"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></symbol>
+<symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 20h16"/></symbol>
+<symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
+<symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3zM12 10v4M12 17h.01"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8.2 11 7.6-4M8.2 13l7.6 4"/></symbol>
+<symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 1.5-2s0-2.5 1.5-2.5H17a4 4 0 0 0 4-4C21 6.5 17 3 12 3z"/><path d="M7.5 11h.01M10 7.5h.01M14.5 7.5h.01"/></symbol>
+</defs></svg>
+
+<header class="top"><div class="wrap bar">
+<a class="brand" href="#top" id="top"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A192F'/%3E%3Cpath d='M9 8v16M23 8v16M9 16h14' stroke='%237FD8CB' stroke-width='3.4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E" width="28" height="28" alt="QRe logo">QRe</a>
+<nav class="main" aria-label="Main"><a href="#generator" data-i18n="nav.gen">Generator</a><a href="#features" data-i18n="nav.feat">Features</a><a href="#faq">FAQ</a></nav>
+<select id="lang" class="btn" aria-label="Language" data-i18n-aria-label="lang"><option value="id">ID</option><option value="en">EN</option></select>
+<button class="btn icon" id="theme" type="button" aria-label="Theme"><svg class="i" aria-hidden="true"><use href="#i-moon"/></svg></button>
+</div></header>
+
+<main>
+<div class="wrap">
+<section class="hero"><h1 data-i18n="h1">Create beautiful QR codes in seconds.</h1>
+<p data-i18n="sub">Generate, customize, and download QR codes locally in your browser.</p>
+<span class="badge"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="badge">Free · Private · No signup</span></span></section>
+
+<section class="gen" id="generator" aria-label="Generator">
+<div>
+<div class="card">
+<div class="tabs" role="tablist" id="tabs" aria-label="QR type"></div>
+<div role="tabpanel" id="panel" aria-live="off"><div id="form"></div></div>
+</div>
+<div class="card"><details id="cust"><summary><svg class="i" aria-hidden="true"><use href="#i-chev"/></svg><span data-i18n="cust">Customize</span></summary>
+<div style="padding-top:14px">
+<div class="presets" id="presets"></div>
+<div class="row">
+<div class="field"><label for="fg" data-i18n="fg">Foreground</label><input type="color" id="fg" value="#0A192F"></div>
+<div class="field"><label for="bg" data-i18n="bgc">Background</label><input type="color" id="bg" value="#FFFFFF"></div>
+</div>
+<div class="chk"><input type="checkbox" id="transp"><label for="transp" data-i18n="transp">Transparent background</label></div>
+<div class="row">
+<div class="field"><label for="dots" data-i18n="dots">Dot style</label><select id="dots"><option value="square">Square</option><option value="rounded">Rounded</option><option value="dots">Dots</option><option value="classy">Classy</option><option value="extra-rounded">Extra rounded</option></select></div>
+<div class="field"><label for="eye" data-i18n="eye">Corner style</label><select id="eye"><option value="square">Square</option><option value="extra-rounded">Rounded</option><option value="dot">Dot</option></select></div>
+</div>
+<div class="row">
+<div class="field"><label for="ecl">Error correction</label><select id="ecl"><option>L</option><option selected>M</option><option>Q</option><option>H</option></select></div>
+<div class="field"><label for="margin" data-i18n="margin">Quiet zone</label><input type="range" id="margin" min="8" max="40" value="16"></div>
+</div>
+<div class="field"><label for="logo" data-i18n="logo">Logo (PNG/JPG/WEBP, max 1 MB)</label><input type="file" id="logo" accept="image/png,image/jpeg,image/webp"><div class="err" id="logoErr" role="alert"></div></div>
+<div class="row"><div class="field"><label for="logoSize" data-i18n="logoSize">Logo size</label><input type="range" id="logoSize" min="10" max="40" value="22"></div>
+<div class="field"><label for="logoRm">&nbsp;</label><button type="button" class="btn" id="logoRm" data-i18n="logoRm">Remove logo</button></div></div>
+<div class="field"><label for="exSize" data-i18n="exSize">Export size</label><select id="exSize"><option value="256">256 px</option><option value="512" selected>512 px</option><option value="1024">1024 px</option></select></div>
+<p class="hint" data-i18n="help">For best results, use high contrast, keep a white margin, and test the QR with several scanner apps.</p>
+</div></details></div>
+</div>
+
+<aside class="sticky card" aria-label="Preview">
+<div class="meta"><span id="typeLbl" class="mono"></span><span id="sizeLbl" class="mono"></span></div>
+<div class="stage" id="stage"><div class="empty" id="empty" data-i18n="empty">Fill in the form to see your QR code.</div><div id="qrbox" hidden></div></div>
+<div class="stat" id="stat" role="status" aria-live="polite"><svg class="i" aria-hidden="true"><use href="#i-alert"/></svg><span id="statTxt"></span></div>
+<div class="payload" id="payload" aria-label="Payload"></div>
+<div class="acts">
+<button class="btn primary" id="dlPng" type="button" disabled><svg class="i" aria-hidden="true"><use href="#i-dl"/></svg>PNG</button>
+<button class="btn primary" id="dlSvg" type="button" disabled><svg class="i" aria-hidden="true"><use href="#i-dl"/></svg>SVG</button>
+<button class="btn" id="dlWebp" type="button" disabled><svg class="i" aria-hidden="true"><use href="#i-dl"/></svg>WEBP</button>
+<button class="btn" id="cpImg" type="button" disabled><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span data-i18n="cpImg">Copy image</span></button>
+<button class="btn" id="cpPay" type="button" disabled><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span data-i18n="cpPay">Copy payload</span></button>
+<button class="btn" id="share" type="button" disabled><svg class="i" aria-hidden="true"><use href="#i-share"/></svg><span data-i18n="share">Share</span></button>
+<button class="btn" id="reset" type="button" style="grid-column:1/-1"><svg class="i" aria-hidden="true"><use href="#i-reset"/></svg><span data-i18n="reset">Reset</span></button>
+</div>
+</aside>
+</section>
+</div>
+
+<div class="wrap"><section class="sec" id="features"><h2 data-i18n="featH">Features</h2><div class="feats">
+<div class="card"><svg class="i" aria-hidden="true"><use href="#i-eye"/></svg><h3 data-i18n="f1">Local-first</h3><p data-i18n="f1d">Everything runs in your browser. Your input is never sent to a server.</p></div>
+<div class="card"><svg class="i" aria-hidden="true"><use href="#i-reset"/></svg><h3 data-i18n="f2">Live preview</h3><p data-i18n="f2d">See changes instantly as you type.</p></div>
+<div class="card"><svg class="i" aria-hidden="true"><use href="#i-palette"/></svg><h3 data-i18n="f3">Custom design</h3><p data-i18n="f3d">Colors, dot styles, corners and logo, with scan-safety checks.</p></div>
+<div class="card"><svg class="i" aria-hidden="true"><use href="#i-dl"/></svg><h3 data-i18n="f4">Multiple formats</h3><p data-i18n="f4d">Export PNG, SVG or WEBP at 256, 512 or 1024 px.</p></div>
+</div></section>
+<section class="sec faq" id="faq"><h2>FAQ</h2>
+<details><summary data-i18n="q1">Is my data sent anywhere?</summary><p data-i18n="a1">No. QR codes are generated locally in your browser. Only language and theme are saved on your device.</p></details>
+<details><summary data-i18n="q2">Why won't my QR scan?</summary><p data-i18n="a2">Use high contrast with a dark foreground on a light background, keep the margin, avoid very long content and large logos.</p></details>
+<details><summary data-i18n="q3">Is it free?</summary><p data-i18n="a3">Yes, free with no signup, and codes have no expiry because they are static.</p></details>
+</section></div>
+</main>
+<footer><div class="wrap"><span>© QRe · <a href="https://hajir.is-a.dev/qre">hajir.is-a.dev/qre</a></span><span data-i18n="foot">Privacy: no tracking, no server processing.</span></div></footer>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+<script type="module">
+const $=s=>document.querySelector(s);
+const T={
+id:{skip:"Lewati ke konten","nav.gen":"Generator","nav.feat":"Fitur",lang:"Bahasa",h1:"Buat QR code cantik dalam hitungan detik.",sub:"Buat, kustomisasi, dan unduh QR code secara lokal di browser Anda.",badge:"Gratis · Privat · Tanpa daftar",cust:"Kustomisasi",fg:"Warna depan",bgc:"Warna latar",transp:"Latar transparan",dots:"Gaya titik",eye:"Gaya sudut",margin:"Zona tenang",logo:"Logo (PNG/JPG/WEBP, maks 1 MB)",logoSize:"Ukuran logo",logoRm:"Hapus logo",exSize:"Ukuran ekspor",help:"Untuk hasil terbaik, gunakan kontras tinggi, pertahankan margin putih, dan uji QR dengan beberapa aplikasi scanner.",empty:"Isi formulir untuk melihat QR code.",cpImg:"Salin gambar",cpPay:"Salin payload",share:"Bagikan",reset:"Reset",featH:"Fitur",f1:"Lokal dulu",f1d:"Semua berjalan di browser. Input Anda tidak dikirim ke server.",f2:"Preview langsung",f2d:"Lihat perubahan seketika saat mengetik.",f3:"Desain kustom",f3d:"Warna, gaya titik, sudut, dan logo dengan pengecekan keamanan scan.",f4:"Banyak format",f4d:"Ekspor PNG, SVG, atau WEBP pada 256, 512, atau 1024 px.",q1:"Apakah data saya dikirim ke mana pun?",a1:"Tidak. QR dibuat lokal di browser. Hanya bahasa dan tema yang disimpan di perangkat Anda.",q2:"Mengapa QR saya sulit dipindai?",a2:"Gunakan kontras tinggi (depan gelap, latar terang), pertahankan margin, hindari isi terlalu panjang dan logo terlalu besar.",q3:"Apakah gratis?",a3:"Ya, gratis tanpa daftar, dan QR statis tidak kedaluwarsa.",foot:"Privasi: tanpa pelacakan, tanpa pemrosesan server.",
+url:"URL",text:"Teks",wifi:"Wi-Fi",email:"Email",contact:"Kontak",crypto:"Crypto",
+fUrl:"URL situs web",fText:"Teks",fSsid:"Nama jaringan (SSID)",fPass:"Kata sandi",fEnc:"Enkripsi",fHidden:"Jaringan tersembunyi",fTo:"Email tujuan",fSub:"Subjek",fBody:"Isi",fFn:"Nama depan",fLn:"Nama belakang",fOrg:"Organisasi",fTitle:"Jabatan",fTel:"Telepon",fWeb:"Website",fAdr:"Alamat",fNote:"Catatan",fNet:"Jaringan",fAddr:"Alamat wallet",fAmt:"Jumlah (opsional)",fLbl:"Label (opsional)",paste:"Tempel",show:"Tampilkan",hide:"Sembunyikan",
+eUrl:"Masukkan URL yang valid, misalnya https://example.com.",eEmail:"Masukkan email yang valid.",eAddr:"Format alamat wallet tidak valid.",eReq:"Kolom ini wajib diisi.",eLong:"Payload terlalu panjang. Kurangi isi agar QR lebih mudah dipindai.",eLogoBig:"Logo terlalu besar (maks 1 MB).",eLogoType:"File harus berupa gambar PNG, JPG, atau WEBP.",eLogoRead:"Logo gagal dibaca.",eClip:"Clipboard tidak tersedia. Silakan salin secara manual.",eLib:"Library QR gagal dimuat. Periksa koneksi lalu muat ulang.",warnCrypto:"Periksa kembali alamat wallet sebelum membayar. Jangan pernah memasukkan private key atau seed phrase.",
+good:"Siap dipindai",rev:"Disarankan ditinjau",bad:"Mungkin sulit dipindai",rContrast:"Kontras rendah.",rInv:"Warna depan lebih terang dari latar; sebagian scanner gagal membaca.",rLogo:"Logo besar; gunakan error correction H.",rDense:"QR sangat padat.",ok:"Disalin.",saved:"Diunduh.",shareNone:"Share tidak tersedia di browser ini.",cnt:"karakter",wait:"Menunggu data"},
+en:{skip:"Skip to content","nav.gen":"Generator","nav.feat":"Features",lang:"Language",h1:"Create beautiful QR codes in seconds.",sub:"Generate, customize, and download QR codes locally in your browser.",badge:"Free · Private · No signup",cust:"Customize",fg:"Foreground",bgc:"Background",transp:"Transparent background",dots:"Dot style",eye:"Corner style",margin:"Quiet zone",logo:"Logo (PNG/JPG/WEBP, max 1 MB)",logoSize:"Logo size",logoRm:"Remove logo",exSize:"Export size",help:"For best results, use high contrast, keep a white margin, and test the QR with several scanner apps.",empty:"Fill in the form to see your QR code.",cpImg:"Copy image",cpPay:"Copy payload",share:"Share",reset:"Reset",featH:"Features",f1:"Local-first",f1d:"Everything runs in your browser. Your input is never sent to a server.",f2:"Live preview",f2d:"See changes instantly as you type.",f3:"Custom design",f3d:"Colors, dot styles, corners and logo, with scan-safety checks.",f4:"Multiple formats",f4d:"Export PNG, SVG or WEBP at 256, 512 or 1024 px.",q1:"Is my data sent anywhere?",a1:"No. QR codes are generated locally in your browser. Only language and theme are saved on your device.",q2:"Why won't my QR scan?",a2:"Use high contrast with a dark foreground on a light background, keep the margin, avoid very long content and large logos.",q3:"Is it free?",a3:"Yes, free with no signup, and static codes never expire.",foot:"Privacy: no tracking, no server processing.",
+url:"URL",text:"Text",wifi:"Wi-Fi",email:"Email",contact:"Contact",crypto:"Crypto",
+fUrl:"Website URL",fText:"Text",fSsid:"Network name (SSID)",fPass:"Password",fEnc:"Encryption",fHidden:"Hidden network",fTo:"Recipient email",fSub:"Subject",fBody:"Body",fFn:"First name",fLn:"Last name",fOrg:"Organization",fTitle:"Job title",fTel:"Phone",fWeb:"Website",fAdr:"Address",fNote:"Notes",fNet:"Network",fAddr:"Wallet address",fAmt:"Amount (optional)",fLbl:"Label (optional)",paste:"Paste",show:"Show",hide:"Hide",
+eUrl:"Enter a valid URL, for example https://example.com.",eEmail:"Enter a valid email.",eAddr:"Invalid wallet address format.",eReq:"This field is required.",eLong:"Payload is too long. Shorten it so the QR is easier to scan.",eLogoBig:"Logo is too large (max 1 MB).",eLogoType:"File must be a PNG, JPG or WEBP image.",eLogoRead:"Could not read the logo.",eClip:"Clipboard unavailable. Please copy manually.",eLib:"QR library failed to load. Check your connection and reload.",warnCrypto:"Double-check the wallet address before paying. Never enter a private key or seed phrase.",
+good:"Good to scan",rev:"Review recommended",bad:"Potentially difficult to scan",rContrast:"Low contrast.",rInv:"Foreground is lighter than background; some scanners fail.",rLogo:"Large logo; use error correction H.",rDense:"QR is very dense.",ok:"Copied.",saved:"Downloaded.",shareNone:"Share is not available in this browser.",cnt:"characters",wait:"Waiting for data"}};
+let lang="id",theme="dark";
+try{lang=localStorage.getItem("qre.lang")||(navigator.language||"").startsWith("en")?localStorage.getItem("qre.lang")||"en":"id";theme=localStorage.getItem("qre.theme")||"dark"}catch(e){}
+const t=k=>T[lang][k]??k;
+const save=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const toast=m=>{const e=$("#toast");e.textContent=m;e.classList.add("show");clearTimeout(toast.h);toast.h=setTimeout(()=>e.classList.remove("show"),2200)};
+
+/* ---------- form definitions ---------- */
+const enc=s=>encodeURIComponent(s);
+const escW=s=>s.replace(/([\\;,":])/g,"\\$1");
+const escV=s=>s.replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/;/g,"\\;").replace(/,/g,"\\,");
+const isUrl=s=>{try{const u=new URL(s);return/^https?:$/.test(u.protocol)&&!!u.hostname.includes(".")}catch(e){return false}};
+const isMail=s=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s);
+const NET={bitcoin:"Bitcoin",ethereum:"Ethereum",litecoin:"Litecoin",solana:"Solana"};
+const TYPES={
+url:{icon:"link",f:[{k:"u",l:"fUrl",type:"url",ph:"https://example.com",paste:1,req:1}],
+ build:v=>v.u,val:v=>!v.u?"eReq":!isUrl(v.u)?"eUrl":""},
+text:{icon:"text",f:[{k:"x",l:"fText",ta:1,req:1,count:1}],build:v=>v.x,val:v=>v.x?"":"eReq"},
+wifi:{icon:"wifi",f:[{k:"ssid",l:"fSsid",req:1},{k:"pw",l:"fPass",type:"password",eye:1},{k:"enc",l:"fEnc",sel:[["WPA","WPA/WPA2"],["WEP","WEP"],["nopass","None"]]},{k:"hid",l:"fHidden",chk:1}],
+ build:v=>`WIFI:T:${v.enc};S:${escW(v.ssid)};${v.enc!=="nopass"&&v.pw?`P:${escW(v.pw)};`:""}${v.hid?"H:true;":""};`,val:v=>v.ssid?"":"eReq",secret:1},
+email:{icon:"mail",f:[{k:"to",l:"fTo",type:"email",req:1},{k:"sub",l:"fSub"},{k:"body",l:"fBody",ta:1}],
+ build:v=>{const q=[v.sub&&"subject="+enc(v.sub),v.body&&"body="+enc(v.body)].filter(Boolean).join("&");return`mailto:${v.to}${q?"?"+q:""}`},val:v=>!v.to?"eReq":!isMail(v.to)?"eEmail":""},
+contact:{icon:"user",f:[{k:"fn",l:"fFn",req:1},{k:"ln",l:"fLn"},{k:"org",l:"fOrg"},{k:"job",l:"fTitle"},{k:"tel",l:"fTel",type:"tel"},{k:"em",l:"fTo",type:"email"},{k:"web",l:"fWeb",type:"url"},{k:"adr",l:"fAdr"},{k:"note",l:"fNote",ta:1}],
+ build:v=>["BEGIN:VCARD","VERSION:3.0",`N:${escV(v.ln)};${escV(v.fn)};;;`,`FN:${escV((v.fn+" "+v.ln).trim())}`,v.org&&`ORG:${escV(v.org)}`,v.job&&`TITLE:${escV(v.job)}`,v.tel&&`TEL:${escV(v.tel)}`,v.em&&`EMAIL:${escV(v.em)}`,v.web&&`URL:${escV(v.web)}`,v.adr&&`ADR:;;${escV(v.adr)};;;;`,v.note&&`NOTE:${escV(v.note)}`,"END:VCARD"].filter(Boolean).join("\n"),
+ val:v=>!v.fn?"eReq":v.em&&!isMail(v.em)?"eEmail":""},
+crypto:{icon:"coin",f:[{k:"net",l:"fNet",sel:Object.entries(NET)},{k:"addr",l:"fAddr",req:1,mono:1},{k:"amt",l:"fAmt",type:"number"},{k:"lbl",l:"fLbl"}],warn:"warnCrypto",
+ build:v=>{const q=[v.amt&&"amount="+enc(v.amt),v.lbl&&"label="+enc(v.lbl)].filter(Boolean).join("&");return`${v.net}:${v.addr}${q?"?"+q:""}`},
+ val:v=>!v.addr?"eReq":!/^[A-Za-z0-9]{14,100}$/.test(v.addr)?"eAddr":""}};
+let cur="url";const vals={};
+const el=(tag,props={},kids=[])=>{const e=document.createElement(tag);Object.assign(e,props);kids.forEach(k=>e.append(k));return e};
+const ico=n=>{const s=document.createElementNS("http://www.w3.org/2000/svg","svg");s.setAttribute("class","i");s.setAttribute("aria-hidden","true");const u=document.createElementNS("http://www.w3.org/2000/svg","use");u.setAttribute("href","#i-"+n);s.append(u);return s};
+
+function renderTabs(){const tb=$("#tabs");tb.replaceChildren();Object.keys(TYPES).forEach(k=>{const b=el("button",{type:"button",id:"tab-"+k,className:"",tabIndex:k===cur?0:-1},[ico(TYPES[k].icon),t(k)]);b.setAttribute("role","tab");b.setAttribute("aria-selected",k===cur);b.setAttribute("aria-controls","panel");b.onclick=()=>setType(k);b.onkeydown=e=>{const ks=Object.keys(TYPES),i=ks.indexOf(k);if(e.key==="ArrowRight"||e.key==="ArrowLeft"){const n=ks[(i+(e.key==="ArrowRight"?1:ks.length-1))%ks.length];setType(n);$("#tab-"+n).focus()}};tb.append(b)});$("#panel").setAttribute("aria-labelledby","tab-"+cur)}
+function renderForm(focus){
+ const d=TYPES[cur],f=$("#form");f.replaceChildren();const v=vals[cur]||(vals[cur]=cur==="wifi"?{enc:"WPA"}:cur==="crypto"?{net:"bitcoin"}:{});
+ const fs=el("fieldset",{},[el("legend",{textContent:t(cur),className:"hint"})]);
+ if(d.warn)fs.append(el("div",{className:"stat rev",textContent:t(d.warn)}));
+ let first;
+ d.f.forEach(x=>{const id="f-"+x.k,w=el("div",{className:x.chk?"chk":"field"});
+  let inp;
+  if(x.sel){inp=el("select",{id});x.sel.forEach(([a,b])=>inp.append(el("option",{value:a,textContent:b})));inp.value=v[x.k]||x.sel[0][0];v[x.k]=inp.value}
+  else if(x.ta){inp=el("textarea",{id,value:v[x.k]||""})}
+  else if(x.chk){inp=el("input",{id,type:"checkbox",checked:!!v[x.k]})}
+  else{inp=el("input",{id,type:x.type||"text",value:v[x.k]||"",placeholder:x.ph||""});if(x.type==="number"){inp.step="any";inp.inputMode="decimal"}if(x.mono)inp.className="mono";inp.autocomplete="off"}
+  inp.setAttribute("aria-describedby","e-"+x.k);
+  const ev=x.chk||x.sel?"change":"input";
+  inp.addEventListener(ev,()=>{v[x.k]=x.chk?inp.checked:inp.value;schedule()});
+  const lab=el("label",{htmlFor:id,textContent:t(x.l)});
+  const cnt=x.count?el("div",{className:"hint mono",id:"cnt"}):null;
+  if(x.chk){w.append(inp,lab)}
+  else{w.append(lab);
+   if(x.paste||x.eye){const r=el("div",{className:"inl"},[inp]);
+    if(x.paste){const b=el("button",{type:"button",className:"btn",textContent:t("paste")});b.onclick=async()=>{try{inp.value=(await navigator.clipboard.readText()).trim();v[x.k]=inp.value;schedule()}catch(e){toast(t("eClip"))}};r.append(b)}
+    if(x.eye){const b=el("button",{type:"button",className:"btn icon"},[ico("eye")]);b.setAttribute("aria-label",t("show"));b.onclick=()=>{const s=inp.type==="password";inp.type=s?"text":"password";b.setAttribute("aria-label",t(s?"hide":"show"))};r.append(b)}
+    w.append(r)}else w.append(inp);
+   if(cnt)w.append(cnt)}
+  w.append(el("div",{className:"err",id:"e-"+x.k}));fs.append(w);first=first||inp});
+ f.append(fs);if(focus&&first)first.focus()}
+function setType(k){cur=k;renderTabs();renderForm(true);schedule(true)}
+
+/* ---------- QR ---------- */
+const PRESETS={Classic:{fg:"#0A192F",bg:"#FFFFFF",dots:"square",eye:"square"},"QRe Mint":{fg:"#0B6A60",bg:"#FFFFFF",dots:"rounded",eye:"extra-rounded"},"Midnight Gold":{fg:"#D4B27A",bg:"#0A192F",dots:"classy",eye:"square"},"High Contrast":{fg:"#000000",bg:"#FFFFFF",dots:"square",eye:"square"},"Soft Teal":{fg:"#116466",bg:"#E8F6F3",dots:"dots",eye:"dot"}};
+let logoURL=null,qr=null,timer=0,payloadText="",ready=false;
+const lum=h=>{const c=[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255).map(x=>x<=.03928?x/12.92:((x+.055)/1.055)**2.4);return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+const contrast=(a,b)=>{const x=lum(a),y=lum(b);return(Math.max(x,y)+.05)/(Math.min(x,y)+.05)};
+const opts=size=>({width:size,height:size,type:"svg",data:payloadText||" ",margin:+$("#margin").value*size/340,image:logoURL||undefined,
+ qrOptions:{errorCorrectionLevel:logoURL&&$("#ecl").value!=="H"?"H":$("#ecl").value},
+ dotsOptions:{type:$("#dots").value,color:$("#fg").value},cornersSquareOptions:{type:$("#eye").value,color:$("#fg").value},cornersDotOptions:{type:$("#eye").value==="dot"?"dot":"square",color:$("#fg").value},
+ backgroundOptions:{color:$("#transp").checked?"rgba(0,0,0,0)":$("#bg").value},imageOptions:{margin:4,imageSize:+$("#logoSize").value/100,crossOrigin:"anonymous",hideBackgroundDots:true}});
+
+function compute(){
+ const d=TYPES[cur],v=vals[cur]||{};let ok=true;
+ d.f.forEach(x=>{const e=$("#e-"+x.k),i=$("#f-"+x.k);if(e){e.textContent="";i&&i.removeAttribute("aria-invalid")}});
+ const code=d.val(v);
+ if(code){ok=false;  // show errors only for touched fields
+  d.f.forEach(x=>{if(v[x.k]){const e=$("#e-"+x.k),i=$("#f-"+x.k);if(i&&code!=="eReq"){e.textContent=t(code);i.setAttribute("aria-invalid","true")}}})}
+ const cnt=$("#cnt");if(cnt)cnt.textContent=(v.x||"").length+" "+t("cnt");
+ payloadText=ok?d.build(v):"";
+ if(ok&&payloadText.length>1800){ok=false;const first=d.f[0];$("#e-"+first.k).textContent=t("eLong");payloadText=""}
+ return ok}
+function render(){
+ const ok=compute();$("#typeLbl").textContent=t(cur);
+ const stage=$("#stage"),empty=$("#empty");
+ ["dlPng","dlSvg","dlWebp","cpImg","cpPay","share"].forEach(id=>$("#"+id).disabled=!ok);
+ stage.classList.toggle("chk-bg",$("#transp").checked);
+ if(!ok){empty.hidden=false;$("#qrbox").hidden=true;$("#statTxt").textContent=t("wait");$("#stat").className="stat";$("#payload").textContent="";$("#sizeLbl").textContent="";return}
+ if(!window.QRCodeStyling){toast(t("eLib"));return}
+ empty.hidden=true;$("#qrbox").hidden=false;const o=opts(300);
+ if(!qr){qr=new QRCodeStyling(o);qr.append($("#qrbox"))}else qr.update(o);
+ $("#sizeLbl").textContent=`${$("#exSize").value}×${$("#exSize").value}px`;
+ $("#payload").textContent=TYPES[cur].secret?payloadText.replace(/P:([^;]|\\;)*;/,"P:••••;"):payloadText;
+ // scanability
+ const c=contrast($("#fg").value,$("#bg").value),issues=[];let lvl=0;
+ if(!$("#transp").checked){if(c<3){issues.push(t("rContrast"));lvl=2}else if(c<4.5){issues.push(t("rContrast"));lvl=Math.max(lvl,1)}
+  if(lum($("#fg").value)>lum($("#bg").value)){issues.push(t("rInv"));lvl=Math.max(lvl,1)}}
+ if(logoURL&&+$("#logoSize").value>25){issues.push(t("rLogo"));lvl=Math.max(lvl,1)}
+ if(payloadText.length>500){issues.push(t("rDense"));lvl=Math.max(lvl,payloadText.length>1000?2:1)}
+ $("#stat").className="stat "+["good","rev","bad"][lvl];
+ $("#statTxt").textContent=[t("good"),t("rev"),t("bad")][lvl]+(issues.length?" — "+issues.join(" "):"");
+}
+function schedule(now){clearTimeout(timer);timer=setTimeout(render,now?0:180)}
+
+/* ---------- exports ---------- */
+const safe=s=>s.replace(/[^a-z0-9_-]/gi,"-").slice(0,40);
+const fname=ext=>`qre-${safe(cur)}-${new Date().toISOString().slice(0,10)}.${ext}`;
+async function blobOf(ext){const s=+$("#exSize").value;const o=opts(s);o.type=ext==="svg"?"svg":"canvas";const q=new QRCodeStyling(o);return await q.getRawData(ext)}
+async function dl(ext){try{const b=await blobOf(ext);const u=URL.createObjectURL(b);const a=el("a",{href:u,download:fname(ext)});document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1500);toast(t("saved"))}catch(e){toast(t("eLib"))}}
+$("#dlPng").onclick=()=>dl("png");$("#dlSvg").onclick=()=>dl("svg");$("#dlWebp").onclick=()=>dl("webp");
+$("#cpPay").onclick=async()=>{try{await navigator.clipboard.writeText(payloadText);toast(t("ok"))}catch(e){toast(t("eClip"))}};
+$("#cpImg").onclick=async()=>{try{const b=await blobOf("png");await navigator.clipboard.write([new ClipboardItem({"image/png":b})]);toast(t("ok"))}catch(e){toast(t("eClip"))}};
+$("#share").onclick=async()=>{try{const b=await blobOf("png"),f=new File([b],fname("png"),{type:"image/png"});if(navigator.canShare&&navigator.canShare({files:[f]}))await navigator.share({files:[f],title:"QRe"});else toast(t("shareNone"))}catch(e){if(e.name!=="AbortError")toast(t("shareNone"))}};
+$("#reset").onclick=()=>{if(Object.values(vals[cur]||{}).some(x=>x&&x!=="WPA"&&x!=="bitcoin")&&!confirm(lang==="id"?"Hapus semua isian?":"Clear all fields?"))return;delete vals[cur];renderForm(true);schedule(true)};
+
+/* ---------- customization ---------- */
+["fg","bg","transp","dots","eye","ecl","margin","logoSize","exSize"].forEach(id=>$("#"+id).addEventListener("input",()=>schedule()));
+const pb=$("#presets");Object.entries(PRESETS).forEach(([n,p])=>{const b=el("button",{type:"button",className:"btn",textContent:n});b.onclick=()=>{Object.entries(p).forEach(([k,v])=>$("#"+k).value=v);$("#transp").checked=false;schedule(true)};pb.append(b)});
+$("#logo").onchange=e=>{const f=e.target.files[0],er=$("#logoErr");er.textContent="";if(!f)return;
+ if(!/^image\/(png|jpeg|webp)$/.test(f.type)){er.textContent=t("eLogoType");e.target.value="";return}
+ if(f.size>1048576){er.textContent=t("eLogoBig");e.target.value="";return}
+ const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{logoURL=r.result;$("#ecl").value="H";schedule(true)};im.onerror=()=>{er.textContent=t("eLogoRead")};im.src=r.result};r.onerror=()=>{er.textContent=t("eLogoRead")};r.readAsDataURL(f)};
+$("#logoRm").onclick=()=>{logoURL=null;$("#logo").value="";schedule(true)};
+
+/* ---------- i18n / theme ---------- */
+function applyLang(){document.documentElement.lang=lang;$("#lang").value=lang;
+ document.querySelectorAll("[data-i18n]").forEach(n=>{const v=T[lang][n.dataset.i18n];if(v)n.textContent=v});
+ document.querySelectorAll("[data-i18n-aria-label]").forEach(n=>n.setAttribute("aria-label",t(n.dataset.i18nAriaLabel)));
+ renderTabs();renderForm(false);schedule(true)}
+$("#lang").onchange=e=>{lang=e.target.value;save("qre.lang",lang);applyLang()};
+function applyTheme(){document.documentElement.dataset.theme=theme;$("#theme").replaceChildren(ico(theme==="dark"?"sun":"moon"));$("#theme").setAttribute("aria-label",theme==="dark"?"Light theme":"Dark theme")}
+$("#theme").onclick=()=>{theme=theme==="dark"?"light":"dark";save("qre.theme",theme);applyTheme()};
+addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key==="Enter"){e.preventDefault();render()}if(e.key==="Escape"&&$("#cust").open&&document.activeElement.closest("#cust"))$("#cust").open=false});
+applyTheme();applyLang();
+</script>
+</body>
+</html>
