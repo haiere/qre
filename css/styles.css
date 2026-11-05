@@ -294,7 +294,7 @@ code, .mono { font-family: var(--font-mono); }
    ========================================================= */
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+  grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr); /* Ubah ke minmax(0, ...) */
   align-items: center;
   gap: var(--space-12);
   padding-block: clamp(3.5rem, 9vw, 7rem);
@@ -443,7 +443,7 @@ code, .mono { font-family: var(--font-mono); }
 
 .workspace {
   display: grid;
-  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr); /* Sudah benar */
   gap: var(--space-6);
   align-items: start;
 }
@@ -455,7 +455,11 @@ code, .mono { font-family: var(--font-mono); }
   gap: var(--space-4);
 }
 
-.form-panel { padding: clamp(1rem, 2.4vw, 1.6rem); }
+.form-panel {
+  padding: clamp(1rem, 2.4vw, 1.6rem);
+  width: 100%;
+  min-width: 0;
+}
 
 /* =========================================================
    Type tabs
@@ -477,6 +481,8 @@ code, .mono { font-family: var(--font-mono); }
   margin-top: 0.55rem;
   padding-bottom: 0.35rem;
   overflow-x: auto;
+  width: 100%
+  min-width: 0;
   scrollbar-width: thin;
   scrollbar-color: var(--border-soft) transparent;
 }
