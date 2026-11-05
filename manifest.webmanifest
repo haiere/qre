@@ -1,0 +1,21 @@
+{
+  "name": "QRe — QR Code Generator",
+  "short_name": "QRe",
+  "description": "Create custom QR codes locally in your browser. Free, private, no signup.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0A192F",
+  "theme_color": "#0A192F",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+} 
