@@ -1,71 +1,232 @@
-[Skip to content](#generator)
+<div align="center">
+  <img src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="QRe Logo" width="120" />
 
-[QRe logoQRe](#top)
+  <h1>QRe — Free QR Code Generator</h1>
 
-[Generator](#generator)[Features](#features)[FAQ](#faq)
+  <p>
+    <a href="https://readme-typing-svg.demolab.com">
+      <img src="https://readme-typing-svg.demolab.com?font=Sora&weight=600&size=22&pause=1000&color=7FD8CB&center=true&vCenter=true&width=600&lines=Create+beautiful+QR+codes+in+seconds.;Local-first+and+privacy-focused.;No+signup,+no+tracking.;Responsive+and+accessible." alt="Typing SVG" />
+    </a>
+  </p>
 
-# Create beautiful QR codes in seconds.
+  <p>
+    <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Status" />
+    <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License" />
+    <img src="https://img.shields.io/badge/Privacy-Local--First-brightgreen?style=flat-square" alt="Privacy" />
+    <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5" />
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3" />
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript" />
+  </p>
 
-Generate, customize, and download QR codes locally in your browser.
+  <p>
+    A production-ready, local-first QR code generator built with semantic HTML, modern CSS, and vanilla JavaScript ES modules.
+  </p>
+  
+  <p>
+    <strong>Live Path:</strong> <a href="https://hajir.is-a.dev/qre/">https://hajir.is-a.dev/qre/</a>
+  </p>
+</div>
 
-Free · Private · No signup
+---
 
-Customize
+## Overview
 
-Foreground
+QRe creates styled QR codes for URLs, text, Wi-Fi, email, phone, SMS, vCard contacts, locations, calendar events, crypto payments, WhatsApp, Telegram, UPI, and raw payloads. All processing occurs entirely within the user's browser. No backend, no uploads, no tracking.
 
-Background
+## Key Features
 
-[ ] Transparent background
+### Generator & Types
+- Supports 15 distinct QR types with dedicated forms and correct payload formats.
+- Realtime preview with debounced rendering. No flickering during updates.
+- Scanability checks including contrast ratio, logo size, quiet zone, density, and capacity warnings.
 
-Dot style
+### Customization
+- Foreground and background colors, with optional linear gradients.
+- Dot styles, corner frame styles, and corner center styles.
+- Adjustable quiet zone, preview size, and error correction levels (L, M, Q, H).
+- Center logo upload (automatically raises error correction to H).
+- Transparent background, optional frame, and caption text.
+- Five built-in presets: Classic, QRe Mint, Midnight Gold, High Contrast, Soft Teal.
 
-Corner style
+### Exports & Sharing
+- Download in PNG, SVG, and WEBP (when supported) formats.
+- Custom export sizes up to 4096px.
+- Copy image to clipboard.
+- Copy encoded payload.
+- Native Web Share API integration.
 
-Error correction
+### Accessibility & Performance
+- Target WCAG 2.2 AA compliance.
+- Semantic landmarks, skip links, and keyboard tab navigation.
+- Focus management for dialogs and mobile menus.
+- ARIA live regions for status updates and error associations.
+- 44px minimum touch targets.
+- Respects `prefers-reduced-motion`.
+- Vanilla JS, no heavy frameworks.
 
-Quiet zone
+### Privacy & Security
+- Zero network requests for user data.
+- `localStorage` only stores language, theme, and non-sensitive UI preferences.
+- Wi-Fi passwords are masked in the preview until explicitly revealed.
+- Uploaded logos are validated by MIME type, size, and decoded safely. SVG logos are rejected to prevent SVG injection.
+- Download filenames are sanitized.
 
-Logo (PNG/JPG/WEBP, max 1 MB)
+---
 
-Logo size
+## Tech Stack
 
-Export size
+- **HTML5**: Semantic markup, structured JSON-LD metadata.
+- **CSS3**: Modern CSS variables, Grid, Flexbox, Container Queries (via media queries), and `color-mix()`.
+- **JavaScript**: Vanilla ES modules, `Intl` API for localization.
+- **QR Engine**: [qr-code-styling v1.9.2](https://github.com/kozakdenys/qr-code-styling) (loaded via CDN with a fallback).
 
-For best results, use high contrast, keep a white margin, and test the QR with several scanner apps.
+---
 
-Fill in the form to see your QR code.
+## Local Development
 
-## Features
+Because the app uses ES modules and fetches the QR library from a CDN, it must be served over HTTP. Opening `index.html` directly via `file://` will not work.
 
-### Local-first
+**Using Python:**
+```bash
+# From the project root
+python3 -m http.server 8080
+```
 
-Everything runs in your browser. Your input is never sent to a server.
+Open http://localhost:8080.
 
-### Live preview
+Using Node.js:
 
-See changes instantly as you type.
+```bash
+npx serve .
+# or
+npx http-server .
+```
 
-### Custom design
+---
 
-Colors, dot styles, corners and logo, with scan-safety checks.
+Deployment
 
-### Multiple formats
+GitHub Pages
 
-Export PNG, SVG or WEBP at 256, 512 or 1024 px.
+1. Push the project to a GitHub repository.
+2. Go to Settings > Pages.
+3. Set Source to Deploy from a branch, choose main and / (root).
+4. If deploying to a custom domain or subpath, update the canonical URL in index.html, robots.txt, and sitemap.xml.
 
-## FAQ
+Netlify
 
-Is my data sent anywhere?
+1. Drag the project folder into Netlify Drop, or connect the repository.
+2. Build command: none.
+3. Publish directory: . (project root).
 
-No. QR codes are generated locally in your browser. Only language and theme are saved on your device.
+Vercel
 
-Why won't my QR scan?
+1. Import the repository.
+2. Framework preset: Other.
+3. Build command: leave empty.
+4. Output directory: ..
 
-Use high contrast with a dark foreground on a light background, keep the margin, avoid very long content and large logos.
+---
 
-Is it free?
+Folder Structure
 
-Yes, free with no signup, and codes have no expiry because they are static.
+```text
+/
+├── index.html
+├── favicon.svg
+├── manifest.webmanifest
+├── robots.txt
+├── sitemap.xml
+├── README.md
+├── assets/
+│   ├── logo.webp          # Optional local copy
+│   └── og-image.webp      # Optional 1200x630 social image
+├── css/
+│   ├── reset.css
+│   ├── tokens.css
+│   ├── styles.css
+│   └── responsive.css
+└── js/
+    ├── app.js             # Orchestration, state, form rendering
+    ├── qr-engine.js       # QR library loader and wrapper
+    ├── form-types.js      # Schemas, validation, payload builders
+    ├── customization.js   # Style state, presets, logo upload
+    ├── downloads.js       # Export composition, clipboard, share
+    ├── i18n.js            # Translations (EN, ID)
+    ├── storage.js         # Safe localStorage wrapper
+    ├── validation.js      # Escaping, URL/email/crypto validation
+    └── icons.js           # SVG sprite and icon markup
+```
 
-© QRe · [hajir.is-a.dev/qre](https://hajir.is-a.dev/qre)Privacy: no tracking, no server processing.
+---
+
+Security and Privacy
+
+· All QR generation is performed locally in the browser. User input is never sent to a server.
+· No analytics, tracking scripts, or third-party cookies are included.
+· localStorage keys used:
+  · qre.lang (language preference)
+  · qre.theme (theme preference)
+  · qre.ui (last preset, export size, preview size)
+· Never persisted: Wi-Fi passwords, crypto keys, contact form contents, captions, and uploaded logos.
+· External network requests are strictly limited to:
+  · Page assets, CSS, and JS (from your host).
+  · Google Fonts (Sora, Inter, JetBrains Mono).
+  · The pinned QR library CDN (jsDelivr/unpkg).
+  · The hosted logo image.
+
+---
+
+Testing Checklist
+
+Functional
+
+☑ All 15 types generate a valid payload.
+☑ URL validation rejects missing protocols.
+☑ UTM parameters are only added when checked.
+☑ Wi-Fi payload escapes ;, :, ,, ", and \.
+☑ Wi-Fi password is masked in the preview.
+☑ vCard output format is correct.
+☑ Crypto address validation works per network.
+☑ Calendar output uses UTC timestamps.
+☑ Live preview updates after typing (debounced).
+☑ PNG, SVG, and WEBP downloads work.
+☑ Copy payload and copy image work with clipboard permissions.
+☑ Web Share API is used when available.
+☑ Invalid logo type or oversized logo is rejected.
+
+Responsive
+
+☑ 320px: No horizontal overflow. Export buttons stack.
+☑ 375px: Tabs scroll horizontally. Preview fits.
+☑ 768px: Two-column workspace collapses cleanly.
+☑ 1024px: Preview is sticky.
+☑ 1440px: Max-width layout is centered.
+
+Accessibility
+
+☑ Keyboard-only navigation works from skip link to footer.
+☑ Tabs support ArrowLeft, ArrowRight, Home, and End.
+☑ Escape closes the mobile menu and dialog.
+☑ Focus ring is visible on all interactive elements.
+☑ Every icon button has an accessible name.
+☑ Form errors are connected via aria-describedby.
+☑ Status changes are announced via aria-live.
+☑ Touch targets are at least 44px.
+
+Quality
+
+☑ No console errors on load or during export.
+☑ No duplicate IDs.
+☑ SVG export can be opened in a vector editor.
+☑ QR codes scan with multiple scanner apps.
+
+---
+
+License
+
+MIT License.
+
+· QRe application code: MIT.
+· qr-code-styling: MIT.
+· Fonts: Sora, Inter, and JetBrains Mono via Google Fonts under their respective licenses.
