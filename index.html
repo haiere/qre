@@ -4,8 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <title>QRe — Free QR Code Generator</title>
-  <meta name="description" content="Create custom QR codes for URLs, Wi-Fi, contacts, crypto, and more. Free, private, and processed locally in your browser.">
+  <!-- Update Meta Tags sesuai i18n.js terbaru -->
+  <title>QRe: Free QR Code Generator</title>
+  <meta name="description" content="Make custom QR codes for links, Wi-Fi, contacts, crypto, and more. It is free, private, and runs right in your browser.">
   <link rel="canonical" href="https://hajir.is-a.dev/qre/">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#0A192F">
@@ -14,8 +15,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="QRe">
-  <meta property="og:title" content="QRe — Free QR Code Generator">
-  <meta property="og:description" content="Generate, customize, and download QR codes locally in your browser. Free, private, no signup.">
+  <meta property="og:title" content="QRe: Free QR Code Generator">
+  <meta property="og:description" content="Make custom QR codes for links, Wi-Fi, contacts, crypto, and more. It is free, private, and runs right in your browser.">
   <meta property="og:url" content="https://hajir.is-a.dev/qre/">
   <meta property="og:image" content="https://i.postimg.cc/GmWt2wch/H-blue.webp">
   <meta property="og:image:alt" content="QRe logo">
@@ -24,8 +25,8 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="QRe — Free QR Code Generator">
-  <meta name="twitter:description" content="Generate, customize, and download QR codes locally in your browser. Free, private, no signup.">
+  <meta name="twitter:title" content="QRe: Free QR Code Generator">
+  <meta name="twitter:description" content="Make custom QR codes for links, Wi-Fi, contacts, crypto, and more. It is free, private, and runs right in your browser.">
   <meta name="twitter:image" content="https://i.postimg.cc/GmWt2wch/H-blue.webp">
   <meta name="twitter:image:alt" content="QRe logo">
 
@@ -54,7 +55,7 @@
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Web",
     "browserRequirements": "Requires JavaScript",
-    "description": "Create custom QR codes for URLs, Wi-Fi, contacts, crypto, and more. Free, private, and processed locally in your browser.",
+    "description": "Make custom QR codes for links, Wi-Fi, contacts, crypto, and more. It is free, private, and runs right in your browser.",
     "isAccessibleForFree": true,
     "offers": {
       "@type": "Offer",
@@ -82,7 +83,7 @@
         "name": "Is QRe really free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. QRe is free to use, with no account, watermark, or signup. All QR generation happens locally in your browser."
+          "text": "Yes. QRe is free to use, with no account, watermark, or sign-up. All QR codes are made right in your browser."
         }
       },
       {
@@ -90,7 +91,7 @@
         "name": "Is my data uploaded anywhere?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. The app does not send your form content to a server. Preferences such as language and theme are stored in localStorage; sensitive fields are not saved."
+          "text": "No. The app does not send your form content to any server. Settings like language and theme are saved in your browser (localStorage). Sensitive fields are not saved."
         }
       },
       {
@@ -98,23 +99,23 @@
         "name": "Which QR code types are supported?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "URL, plain text, Wi-Fi, email, phone, SMS, vCard contact, location, calendar event, crypto payments, WhatsApp, Telegram, UPI, and raw custom payloads."
+          "text": "Links, plain text, Wi-Fi, email, phone, SMS, vCard contacts, locations, calendar events, crypto payments, WhatsApp, Telegram, UPI, and custom raw data."
         }
       },
       {
         "@type": "Question",
-        "name": "Why does my QR code fail to scan?",
+        "name": "Why won't my QR code scan?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Low contrast, a large logo, a missing quiet zone, or a very dense payload can all hurt scanning. Use error correction H with a logo, keep the margin, and test with multiple scanner apps."
+          "text": "Low contrast, a large logo, a missing blank border, or too much content can make a code hard to scan. When you use a logo, choose error correction H, keep the border, and test with a few scanner apps."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I use the exported QR code commercially?",
+        "name": "Can I use exported QR codes commercially?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. You own the content you generate and can use the exported image in print or digital projects. Make sure you have rights to any logo you upload."
+          "text": "Yes. You own the content you create and can use the exported image in print or digital projects. Make sure you have the rights to any logo you upload."
         }
       }
     ]
@@ -165,21 +166,17 @@
     <!-- HERO -->
     <section class="hero container" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="badge">
-          <svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>
-          <span data-i18n="hero.badge">Free · Private · No signup</span>
-        </p>
-        <h1 id="hero-title" data-i18n="hero.title">Create beautiful QR codes in seconds.</h1>
-        <p class="hero-lead" data-i18n="hero.lead">Generate, customize, and download QR codes locally in your browser. No account, no uploads, no tracking.</p>
+        <h1 id="hero-title" data-i18n="hero.title">Make beautiful QR codes in seconds.</h1>
+        <p class="hero-lead" data-i18n="hero.lead">Create, customize, and download QR codes right in your browser. No account, no uploads, no tracking.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#generator">
             <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
-            <span data-i18n="hero.cta">Start generating</span>
+            <span data-i18n="hero.cta">Start creating</span>
           </a>
         </div>
         <p class="hero-note">
           <svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>
-          <span data-i18n="hero.note">Works offline after the library loads. Your data never leaves this device.</span>
+          <span data-i18n="hero.note">Keeps working offline once the library loads. Your data never leaves this device.</span>
         </p>
       </div>
       <div class="hero-art" aria-hidden="true">
@@ -196,7 +193,7 @@
     <section class="generator container" id="generator" aria-labelledby="generator-title">
       <div class="section-head">
         <h2 id="generator-title" data-i18n="generator.title">QR code generator</h2>
-        <p data-i18n="generator.lead">Choose a type, fill in the details, and watch your QR code update live.</p>
+        <p data-i18n="generator.lead">Pick a type, fill in the details, and watch your QR code update as you type.</p>
       </div>
 
       <div class="workspace">
@@ -305,10 +302,10 @@
               </fieldset>
 
               <fieldset class="form-group">
-                <legend data-i18n="custom.quietZone">Quiet zone & size</legend>
+                <legend data-i18n="custom.quietZone">Blank border & size</legend>
 
                 <div class="field">
-                  <label for="margin-range" data-i18n="custom.quietZone">Quiet zone</label>
+                  <label for="margin-range" data-i18n="custom.quietZone">Blank border</label>
                   <div class="range-row">
                     <input type="range" id="margin-range" min="8" max="40" step="1" value="20">
                     <output id="margin-output" for="margin-range">20 px</output>
@@ -326,10 +323,10 @@
                 <div class="field">
                   <label for="ec-select" data-i18n="custom.ec">Error correction</label>
                   <select id="ec-select">
-                    <option value="L" data-i18n="ec.L">L — 7%</option>
-                    <option value="M" data-i18n="ec.M">M — 15%</option>
-                    <option value="Q" data-i18n="ec.Q">Q — 25%</option>
-                    <option value="H" data-i18n="ec.H">H — 30%</option>
+                    <option value="L" data-i18n="ec.L">L (7%)</option>
+                    <option value="M" data-i18n="ec.M">M (15%)</option>
+                    <option value="Q" data-i18n="ec.Q">Q (25%)</option>
+                    <option value="H" data-i18n="ec.H">H (30%)</option>
                   </select>
                 </div>
               </fieldset>
@@ -444,17 +441,17 @@
 
               <div class="qr-empty" id="qr-empty">
                 <img src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="QRe logo" width="48" height="48" decoding="async" data-i18n-alt="brand.logoAlt">
-                <p class="empty-title" data-i18n="preview.emptyTitle">Your QR code will appear here</p>
+                <p class="empty-title" data-i18n="preview.emptyTitle">Your QR code will show up here</p>
                 <p class="empty-text" data-i18n="preview.emptyText">Start by choosing a type and entering your content.</p>
               </div>
 
               <div class="preview-error" id="preview-error" hidden>
                 <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
                 <p class="empty-title" data-i18n="preview.errorTitle">Preview unavailable</p>
-                <p class="empty-text" data-i18n="preview.errorText">The QR library could not be loaded. Check your connection and try again.</p>
+                <p class="empty-text" data-i18n="preview.errorText">The QR library could not load. Check your connection and try again.</p>
                 <button class="btn btn-secondary" id="library-retry" type="button">
                   <svg class="icon" aria-hidden="true"><use href="#i-reset"></use></svg>
-                  <span data-i18n="preview.retry">Retry</span>
+                  <span data-i18n="preview.retry">Try again</span>
                 </button>
               </div>
             </div>
@@ -476,12 +473,12 @@
 
             <div class="payload-box">
               <div class="payload-head">
-                <span class="field-label" data-i18n="label.payload">Encoded payload</span>
+                <span class="field-label" data-i18n="label.payload">Encoded data</span>
                 <div class="payload-actions">
-                  <button class="icon-btn small" id="payload-toggle" type="button" aria-label="Show payload" aria-pressed="false" data-i18n-aria-label="label.showPayload">
+                  <button class="icon-btn small" id="payload-toggle" type="button" aria-label="Show data" aria-pressed="false" data-i18n-aria-label="label.showPayload">
                     <svg class="icon" aria-hidden="true"><use href="#i-eye"></use></svg>
                   </button>
-                  <button class="icon-btn small" id="copy-payload" type="button" aria-label="Copy payload" data-i18n-aria-label="btn.copy">
+                  <button class="icon-btn small" id="copy-payload" type="button" aria-label="Copy data" data-i18n-aria-label="btn.copy">
                     <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>
                   </button>
                 </div>
@@ -535,7 +532,7 @@
                 </button>
               </div>
 
-              <p class="hint" data-i18n="export.note">Exports include the quiet zone. Test the downloaded code with more than one scanner.</p>
+              <p class="hint" data-i18n="export.note">Exports include the blank border. Test the downloaded code with more than one scanner app.</p>
             </div>
           </div>
         </div>
@@ -545,35 +542,35 @@
     <!-- FEATURES -->
     <section class="features container" id="features" aria-labelledby="features-title">
       <div class="section-head">
-        <h2 id="features-title" data-i18n="features.title">Built for speed, privacy, and real-world scanning.</h2>
-        <p data-i18n="features.lead">Everything you need to create a reliable QR code, without leaving your browser.</p>
+        <h2 id="features-title" data-i18n="features.title">Made for speed, privacy, and real-world scanning.</h2>
+        <p data-i18n="features.lead">Everything you need to make a reliable QR code, without leaving your browser.</p>
       </div>
 
       <div class="feature-grid">
         <article class="feature-card">
           <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg></span>
-          <h3 data-i18n="features.1.title">Local-first privacy</h3>
+          <h3 data-i18n="features.1.title">Privacy first</h3>
           <p data-i18n="features.1.desc">Everything runs in your browser. Your content is never uploaded or logged.</p>
         </article>
         <article class="feature-card">
           <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-zap"></use></svg></span>
           <h3 data-i18n="features.2.title">Live preview</h3>
-          <p data-i18n="features.2.desc">See every change instantly, with scanability checks that help you avoid fragile codes.</p>
+          <p data-i18n="features.2.desc">See every change right away. Built-in checks help you avoid codes that are hard to scan.</p>
         </article>
         <article class="feature-card">
           <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-palette"></use></svg></span>
           <h3 data-i18n="features.3.title">Design controls</h3>
-          <p data-i18n="features.3.desc">Colors, gradients, dot shapes, logos, frames, and captions — without leaving the page.</p>
+          <p data-i18n="features.3.desc">Change colors, gradients, dot shapes, logos, frames, and captions without leaving the page.</p>
         </article>
         <article class="feature-card">
           <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg></span>
-          <h3 data-i18n="features.4.title">Multiple exports</h3>
-          <p data-i18n="features.4.desc">Download crisp PNG, SVG, or WEBP files at the size you need, or copy the image directly.</p>
+          <h3 data-i18n="features.4.title">Multiple export formats</h3>
+          <p data-i18n="features.4.desc">Download sharp PNG, SVG, or WEBP files in the size you need, or copy the image directly.</p>
         </article>
         <article class="feature-card">
           <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-smartphone"></use></svg></span>
           <h3 data-i18n="features.5.title">Accessible by default</h3>
-          <p data-i18n="features.5.desc">Keyboard support, visible focus, clear errors, and responsive layouts from 320 px up.</p>
+          <p data-i18n="features.5.desc">Works with the keyboard, shows a clear focus outline, gives clear error messages, and fits screens from 320 px wide.</p>
         </article>
       </div>
     </section>
@@ -581,8 +578,8 @@
     <!-- FAQ -->
     <section class="faq container" id="faq" aria-labelledby="faq-title">
       <div class="section-head">
-        <h2 id="faq-title" data-i18n="faq.title">Questions, answered.</h2>
-        <p data-i18n="faq.lead">Short answers to the things people ask most.</p>
+        <h2 id="faq-title" data-i18n="faq.title">Common questions, answered.</h2>
+        <p data-i18n="faq.lead">Quick answers to the questions people ask most.</p>
       </div>
 
       <div class="faq-list">
@@ -591,35 +588,35 @@
             <span data-i18n="faq.q1">Is QRe really free?</span>
             <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
           </summary>
-          <p data-i18n="faq.a1">Yes. QRe is free to use, with no account, watermark, or signup. All QR generation happens locally in your browser.</p>
+          <p data-i18n="faq.a1">Yes. QRe is free to use, with no account, watermark, or sign-up. All QR codes are made right in your browser.</p>
         </details>
         <details class="faq-item">
           <summary>
             <span data-i18n="faq.q2">Is my data uploaded anywhere?</span>
             <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
           </summary>
-          <p data-i18n="faq.a2">No. The app does not send your form content to a server. Preferences such as language and theme are stored in localStorage; sensitive fields are not saved.</p>
+          <p data-i18n="faq.a2">No. The app does not send your form content to any server. Settings like language and theme are saved in your browser (localStorage). Sensitive fields are not saved.</p>
         </details>
         <details class="faq-item">
           <summary>
             <span data-i18n="faq.q3">Which QR code types are supported?</span>
             <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
           </summary>
-          <p data-i18n="faq.a3">URL, plain text, Wi-Fi, email, phone, SMS, vCard contact, location, calendar event, crypto payments, WhatsApp, Telegram, UPI, and raw custom payloads.</p>
+          <p data-i18n="faq.a3">Links, plain text, Wi-Fi, email, phone, SMS, vCard contacts, locations, calendar events, crypto payments, WhatsApp, Telegram, UPI, and custom raw data.</p>
         </details>
         <details class="faq-item">
           <summary>
-            <span data-i18n="faq.q4">Why does my QR code fail to scan?</span>
+            <span data-i18n="faq.q4">Why won't my QR code scan?</span>
             <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
           </summary>
-          <p data-i18n="faq.a4">Low contrast, a large logo, a missing quiet zone, or a very dense payload can all hurt scanning. Use error correction H with a logo, keep the margin, and test with multiple scanner apps.</p>
+          <p data-i18n="faq.a4">Low contrast, a large logo, a missing blank border, or too much content can make a code hard to scan. When you use a logo, choose error correction H, keep the border, and test with a few scanner apps.</p>
         </details>
         <details class="faq-item">
           <summary>
-            <span data-i18n="faq.q5">Can I use the exported QR code commercially?</span>
+            <span data-i18n="faq.q5">Can I use exported QR codes commercially?</span>
             <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
           </summary>
-          <p data-i18n="faq.a5">Yes. You own the content you generate and can use the exported image in print or digital projects. Make sure you have rights to any logo you upload.</p>
+          <p data-i18n="faq.a5">Yes. You own the content you create and can use the exported image in print or digital projects. Make sure you have the rights to any logo you upload.</p>
         </details>
       </div>
     </section>
@@ -632,16 +629,41 @@
           <img src="https://i.postimg.cc/GmWt2wch/H-blue.webp" alt="QRe logo" data-i18n-alt="brand.logoAlt" width="28" height="28" loading="lazy" decoding="async">
           <span class="brand-name">QRe</span>
         </a>
-        <p data-i18n="footer.tagline">Private, local-first QR codes for the web.</p>
+        <p data-i18n="footer.tagline">Private QR codes for the web, made in your browser.</p>
         <p class="footer-note" data-i18n="footer.privacyNote">No accounts. No uploads. No tracking by default.</p>
       </div>
+      
+      <!-- FIXED: Missing `>` and misplaced data-i18n attributes -->
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="README.md#security--privacy" data-i18n="footer.privacy">Privacy</a>
-        <a href="README.md#terms" data-i18n="footer.terms">Terms</a>
-        <a href="README.md" data-i18n="footer.source">Source & docs</a>
+        <a href="https://hajir.is-a.dev/raia-footer/#privacy" target="_blank" rel="noopener noreferrer" data-i18n="footer.privacy">Privacy</a>
+        <a href="https://hajir.is-a.dev/raia-footer/#terms" target="_blank" rel="noopener noreferrer" data-i18n="footer.terms">Terms</a>
+        <a href="https://github.com/haiere/qre" target="_blank" rel="noopener noreferrer" data-i18n="footer.source">Source & docs</a>
       </nav>
+      
       <p class="footer-copy" id="footer-copy" data-i18n="footer.rights">© 2025 QRe. Built for the open web.</p>
     </div>
+
+    <!-- Support Section -->
+    <section id="support" class="section section--narrow" aria-labelledby="support-title">
+      <div class="section-inner section-inner--mid">
+        <p id="support-title" class="support-eyebrow" data-i18n="support.title">Support my work</p>
+
+        <div class="support-grid">
+          <a href="https://buymeacoffee.com/hajirstudio" class="support-cta support-cta--coffee" target="_blank" rel="noopener noreferrer" aria-label="Support through Buy Me a Coffee">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+            Buy Me a Coffee
+          </a>
+          <a href="https://sociabuzz.com/HajirStudio" class="support-cta support-cta--buzz" target="_blank" rel="noopener noreferrer" aria-label="Support through Sociabuzz">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+            Sociabuzz
+          </a>
+        </div>
+
+        <p class="support-note" data-i18n="support.note">
+          Your donation helps me keep building free tools and experiments for the open web.
+        </p>
+      </div>
+    </section>
   </footer>
 
   <div class="toast-region" id="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
@@ -664,4 +686,4 @@
     </div>
   </noscript>
 </body>
-                 </html>
+          </html>
